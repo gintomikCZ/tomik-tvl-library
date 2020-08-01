@@ -1,2 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-export { default as TomikTvlLibrarySample } from './tomik-tvl-library-sample.vue';
+import TomikTvlLibrarySample from './tomik-tvl-library-sample.vue'
+import TvlButton from './TvlButton'
+export {
+  TomikTvlLibrarySample,
+  TvlButton
+}

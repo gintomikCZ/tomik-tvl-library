@@ -1,0 +1,176 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey100: #f7f7f7;
+  --grey150: #e6e6E6;
+  --grey200: #d5d5d5;
+  --grey250: #c1c1c1;
+  --grey300: #ababab;
+  --grey350: #979797;
+  --grey400: #828282;
+  --grey450: #6e6e6e;
+  --grey500: #585858; /* text light */
+  --grey550: #4d4d4d;
+  --grey600: #424242;
+  --grey650: #373737; /* text */
+  --grey700: #2c2c2c;
+  --grey750: #212121;
+  --grey800: #161616; /* text dark */
+  --grey850: #0d0d0d;
+  --grey900: #040404;
+
+  --blue100: #f4fcfe;
+  --blue150: #daf4fb;
+  --blue200: #C9F0F9;
+  --blue250: #aee8f6;
+  --blue300: #92e0f4;
+  --blue350: #76d8f1;
+  --blue400: #5bd1ee;
+  --blue450: #3fc8eb;
+  --blue500: #25C1E8;
+  --blue550: #17b0d6;
+  --blue600: #1396b6;
+  --blue650: #107c97;
+  --blue700: #0d647a;
+  --blue750: #094a5a;
+  --blue800: #06323d;
+  --blue850: #041e24;
+  --blue900: #010a0c;
+
+  --pink100: #ffe9ef;
+  --pink150: #ffdbe3;
+  --pink200: #ffc5d3;
+  --pink250: #ffb7c8;
+  --pink300: #ffa9bd;
+  --pink350: #ff9ab2;
+  --pink400: #ff8ca7;
+  --pink450: #ff7d9c;
+  --pink500: #ff6f91;
+  --pink550: #ff4a75;
+  --pink600: #ff2659;
+  --pink650: #ff013d;
+  --pink700: #dc0034;
+  --pink750: #b70023;
+  --pink800: #920023;
+  --pink850: #5b0016;
+  --pink900: #37000d;
+
+  --green100: #f4fcf9;
+  --green150: #ddf6ec;
+  --green200: #c6efdf;
+  --green250: #aae8cf;
+  --green300: #8ce0be;
+  --green350: #71d8ae;
+  --green400: #53d09e;
+  --green450: #37c68c;
+  --green500: #2fab79;
+  --green550: #29966a;
+  --green600: #23805b;
+  --green650: #1d6a4b;
+  --green700: #18563d;
+  --green750: #12432f;
+  --green800: #0d2e21;
+  --green850: #071a12;
+  --green900: #020906;
+}
+
+
+
+.btn-green100 {
+	background: #f4fcf9;
+	transition: all 0.4s ease-in-out;
+	color: #212121;
+}
+
+.btn-green100:hover {
+	background: #f6fcfa;
+	color: #0d0d0d;
+}
+
+.btn-green200 {
+	background: #c6efdf;
+	transition: all 0.4s ease-in-out;
+	color: #212121;
+}
+
+.btn-green200:hover {
+	background: #cff1e4;
+	color: #0d0d0d;
+}
+
+.btn-green300 {
+	background: #8ce0be;
+	transition: all 0.4s ease-in-out;
+	color: #212121;
+}
+
+.btn-green300:hover {
+	background: #9de5c8;
+	color: #0d0d0d;
+}
+
+.btn-green400 {
+	background: #53d09e;
+	transition: all 0.4s ease-in-out;
+	color: #212121;
+}
+
+.btn-green400:hover {
+	background: #6dd7ad;
+	color: #0d0d0d;
+}
+
+.btn-green500 {
+	background: #2fab79;
+	transition: all 0.4s ease-in-out;
+	color: #fff;
+}
+
+.btn-green500:hover {
+	background: #3cc991;
+	color: #0d0d0d;
+}
+
+.btn-green600 {
+	background: #23805b;
+	transition: all 0.4s ease-in-out;
+	color: #fff;
+}
+
+.btn-green600:hover {
+	background: #2ea978;
+	color: #fff;
+}
+
+.btn-green700 {
+	background: #18563d;
+	transition: all 0.4s ease-in-out;
+	color: #fff;
+}
+
+.btn-green700:hover {
+	background: #25855e;
+	color: #fff;
+}
+
+.btn-green800 {
+	background: #0d2e21;
+	transition: all 0.4s ease-in-out;
+	color: #fff;
+}
+
+.btn-green800:hover {
+	background: #1c6347;
+	color: #fff;
+}
+
+.btn-green900 {
+	background: #020906;
+	transition: all 0.4s ease-in-out;
+	color: #fff;
+}
+
+.btn-green900:hover {
+	background: #10462f;
+	color: #fff;
+}
