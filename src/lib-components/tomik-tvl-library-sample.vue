@@ -2,112 +2,52 @@
 import { contrast, lighten, darken, isLight, hexToRgb } from '../helpers/color_helper.js'
 export default {
   name: 'TomikTvlLibrarySample', // vue component name
-  data() {
+  data () {
     return {
-      counter: 5,
-      initCounter: 5,
-      message: {
-        action: null,
-        amount: null,
-      },
-      colors: [
-        'green100',
-        'green150',
-        'green200',
-        'green250',
-        'green300',
-        'green350',
-        'green400',
-        'green450', 
-        'green500',
-        'green550',
-        'green600',
-        'green650',
-        'green700',
-        'green750',
-        'green800',
-        'green850',
-        'green900'
-      ]
-    };
-  },
-  computed: {
-    colorsObject () {
-      return this.colors.map(color => {
-        let ar = hexToRgb(color)
-        return {
-          main: color,
-          lighten: lighten(color, 15),
-          darken: darken(color, 15),
-          isLight: isLight(color) ? 'light' : 'dark',
-          rgb: '' + ar[0] + '|' + ar[1] + '|' + ar[2]
-        }
-      })
-    },
-    changedBy () {
-      const { message } = this;
-      if (!message.action) return 'initialized';
-      return `${message.action} ${message.amount ?? ''}`.trim();
-    },
-    toWhite () {
-      return this.colors.map(color => contrast(color, '#ffffff'))
-    },
-    toBlack () {
-      return  this.colors.map(color => contrast(color, '#000000'))
+      shadows: [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900],
+      colors: ['green', 'pink', 'grey', 'blue']
     }
-  },
-  methods: {
-    increment(arg) {
-      const amount = (typeof arg !== 'number') ? 1 : arg;
-      this.counter += amount;
-      this.message.action = 'incremented by';
-      this.message.amount = amount;
-    },
-    decrement(arg) {
-      const amount = (typeof arg !== 'number') ? 1 : arg;
-      this.counter -= amount;
-      this.message.action = 'decremented by';
-      this.message.amount = amount;
-    },
-    reset() {
-      this.counter = this.initCounter;
-      this.message.action = 'reset';
-      this.message.amount = null;
-    },
-  },
+  }
 };
 </script>
 
 <template>
-  <div class="tomik-tvl-library-sample">
-    <template v-for="color in colors">
-      <tvl-button :color="color" :key="color" :label="color"/>
-    </template>
-  </div>
+  <div style="text-align: center; padding: 20px 0; overflow:  auto">
+    <h1>tvl-button</h1>
+    <p>This is a text ...</p>
+    <div style="display: flex; justify-content: center;">
+      <tvl-button color="green650" disabled label="disabled anchor" size="small" href="https://www.google.com"/>
+      <tvl-button color="pink750" disabled label="disabled button" size="small" />
+     <tvl-button color="blue500" size="large" plain label="blue500 plain large"/>
+    </div>
 
+    <div style="display: flex; margin: 20px 0; justify-content: center;">
+      <div
+        v-for="color in colors"
+        style="display: flex; flex-direction: column; margin: 0 5px;"
+        :key="color"
+      >
+        <template v-for="shadow in shadows">
+          <tvl-button
+            size="medium"
+            :color="color + shadow"
+            :key="color + shadow"
+            :label="color + shadow"
+            href="https://www.google.com"
+          />
+          <tvl-button
+            size="small"
+            :color="color + shadow"
+            :key="color + shadow + 'outline'"
+            :label="color + shadow + ' outline'"
+            outline
+          />
+        </template>
+
+      </div>
+    </div>
   </div>
 </template>
 
-<style lang="stylus">
-  $color=#ff91ff
-  body
-    background: var(--grey450)
-  .tomik-tvl-library-sample {
-    display: block;
-    width: 400px;
-    margin: 25px auto;
-    border: 1px solid #ccc;
-    background: #eaeaea;
-    text-align: center;
-    padding: 25px;
-  }
-  .tomik-tvl-library-sample p {
-    margin: 0 0 1em;
-  }
-  .btn-group
-    display: flex
-    margin-top: 2px
-  .btn-group > button
-    padding: 4px 8px
-    border-radius: 5px
+<style>
 </style>

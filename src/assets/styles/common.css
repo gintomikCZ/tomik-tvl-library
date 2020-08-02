@@ -9,7 +9,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  font-family: var(--font-family-text)
 }
 
 *, *::after, *::before {
@@ -31,7 +31,30 @@ button {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headers);
+  margin: 0 0 0.65rem;
+}
+h1 {
+  font-size: 4.0rem;
+}
+h2 {
+  font-size: 3.2rem;
+}
+h3 {
+  font-size: 2.4rem;
+}
+h4 {
+  font-size: 2.0rem;
+}
+h5 {
+  font-size: 1.8rem;
+}
+h6 {
+  font-size: 1.6rem;
+}
 
 .tvl-focusable-parent {
   padding: .4rem;
 }
+
