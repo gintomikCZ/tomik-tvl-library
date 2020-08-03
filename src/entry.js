@@ -1,22 +1,24 @@
 //import styles
-import '@/assets/styles/colors.css'
-import '@/assets/styles/common.css'
-import '@/assets/styles/variables.css'
+import { variables } from '@/assets/styles/variables.js'
+// import '@/assets/styles/colors.css'
+// import '@/assets/styles/common.css'
+// import '@/assets/styles/variables.css'
 
 // Import vue components
 import * as components from '@/lib-components/index';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
-library.add(fas, far)
-console.log(components)
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { far } from '@fortawesome/free-regular-svg-icons'
+// import { fas } from '@fortawesome/free-solid-svg-icons'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// library.add(fas, far)
 // install function executed by Vue.use()
 const install = function installTomikTvlLibrary(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('FontAwesomeIcon', FontAwesomeIcon)
-  console.log(components)
+  // Vue.component('FontAwesomeIcon', FontAwesomeIcon)
+  Object.keys(variables).forEach(key => {
+    document.documentElement.style.setProperty(key, variables[key])
+  })
   Object.entries(components).forEach(([componentName, component]) => {
     Vue.component(componentName, component);
   });
