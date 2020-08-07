@@ -1,5 +1,5 @@
 <template>
-  <button 
+  <button
     :type="buttonType"
     ref="myBtn"
     :class="[
@@ -33,6 +33,3 @@ export default {
   }
 }
 </script>
-<style>
- 
-</style>

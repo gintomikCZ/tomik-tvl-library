@@ -1,0 +1,169 @@
+/* grow-left */
+.grow-left-enter, .grow-left-leave-to {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.grow-left-enter-to, .grow-left-leave {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.grow-left-enter-active, .grow-left-leave-active {
+  transform-origin: left;
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+/* slide */
+.slide-enter, .slide-leave-to {
+  opacity: 0;
+  transform: scale3d(2, 0.5, 1) translate3d(400px, 0, 0);
+}
+.slide-enter-to {
+  transform: scale3d(1, 1, 1);
+}
+.slide-enter-active, .slide-leave-active {
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.slide-leave {
+  transform: scale3d(1, 1, 1);
+}
+
+/* grow-down */
+.grow-down-enter, .grow-down-leave-to {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.grow-down-enter-to, .grow-down-leave {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+.grow-down-enter-active, .grow-down-leave-active {
+  transition: transform var(--transition-duration) ease-in-out;
+  transform-origin: top;
+}
+
+/* tfade */
+.tfade-enter, .tfade-leave-to {
+  opacity: 0;
+}
+.tfade-leave, .tfade-enter-to {
+  opacity: 1;
+}
+.tfade-leave-active, .tfade-enter-active {
+  transition: opacity var(--transition-duration) ease;
+}
+
+/* tfadedown */
+.tfadedown-enter, .tfadedown-leave-to {
+  transform-origin:top;
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+.tfadedown-leave, .tfadedown-enter-to {
+  transform-origin:top;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.tfadedown-leave-active, .tfadedown-enter-active {
+  transform-origin:top;
+  transition: opacity var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+}
+
+/* tfadeleft */
+.tfadeleft-enter, .tfadeleft-leave-to {
+  transform-origin:left;
+  opacity: 0;
+  transform: translate3d(-20px, 0, 0);
+}
+.tfadeleft-leave, .tfadeleft-enter-to {
+  transform-origin:left;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.tfadeleft-leave-active, .tfadeleft-enter-active {
+  transform-origin:left;
+  transition: opacity var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+}
+
+/* tfaderight */
+.tfaderight-enter, .tfaderight-leave-to {
+  transform-origin: right;
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.tfaderight-leave, .tfaderight-enter-to {
+  transform-origin: right;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.tfaderight-leave-active, .tfaderight-enter-active {
+  transform-origin: right;
+  transition: opacity var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out
+}
+/* tfadeup */
+.tfadeup-enter, .tfadeup-leave-to {
+  transform: translateY(100px);
+}
+.tfadeup-leave, .tfadeup-enter-to {
+  transform: translateY(0)ů
+}
+.tfadeup-leave-active, .tfadeup-enter-active {
+  transform-origin: top;
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+/*slidedown */
+.slidedown-enter-active, .slidedown-leave-active {
+  transition: transform var(--transition-duration) ease;
+  transform-origin: top;
+}
+.slidedown-enter-to, .slidedown-leave {
+  transform-origin: top;
+  transform: scaleY(1);
+}
+.slidedown-enter, .slidedown-leave-to {
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+/* tslideup */
+.tslideup-enter, .tslideup-leave-to {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.tslideup-leave, .tslideup-enter-to {
+  opacity: 1;
+  transform: scaleY(1);
+  transform-origin: top;
+}
+.tslideup-leave-active, .tslideup-enter-active {
+  transition: opacity var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+  transform-origin: top;
+}
+
+/* tslideleft */
+.tslideleft-leave-to {
+  transform: translateX(-5.0rem);
+  transform-origin: left;
+  opacity: 0;
+}
+.tslideleft-leave, .tslideleft-enter-to {
+  opacity: 1;
+  transform: translateX(0);
+  transform-origin: left;
+}
+.tslideleft-leave-active, .tslideleft-enter-active {
+  transform-origin: left;
+  transition: transform var(--transition-duration) ease-in-out, opacity var(--transition-duration) ease-in-out;
+}
+
+/* slideleft */
+.slideleft-enter, .slideleft-leave-to {
+  transform: translateX(-20.0rem);
+}
+.slideleft-leave, .slideleft-enter-to {
+  transform: translateX(0);
+}
+.slideleft-leave-active, .slideleft-enter-active {
+  transition: transform var(--transition-duration) ease-in-out;
+  transform-origin: left;
+}

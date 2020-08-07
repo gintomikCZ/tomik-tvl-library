@@ -11,16 +11,44 @@ import * as components from '@/lib-components/index';
 // import { fas } from '@fortawesome/free-solid-svg-icons'
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // library.add(fas, far)
+
+// import modalWrapper plugin
+import { wrap, unwrap } from '@/plugins/modalWrapper.js'
 // install function executed by Vue.use()
+import { contrastDirective } from './directives/contrast.js'
+console.log(contrastDirective)
 const install = function installTomikTvlLibrary(Vue) {
   if (install.installed) return;
   install.installed = true;
-  // Vue.component('FontAwesomeIcon', FontAwesomeIcon)
+
+  // setting global css custom properties
   Object.keys(variables).forEach(key => {
     document.documentElement.style.setProperty(key, variables[key])
   })
+  // modalWrapper
+  Vue.prototype.$wrap = wrap
+  Vue.prototype.$unwrap = unwrap
+  // setting global css rules by a style element
+  const styl = document.createElement('style')
+  document.head.appendChild(styl)
+  styl.sheet.insertRule('body { background: #fff; font-size: 1.6rem; line-height: 1.3; margin: 0; width: 100vw; height: 100vh; font-family: var(--font-family-text); color: #333; }')
+  styl.sheet.insertRule(':root { font-size: 62.5%; }')
+  styl.sheet.insertRule('button { border: none; background-color: transparent; padding: 0; cursor: pointer;  @media screen and (-ms-high-contrast: active) { border: 2px solid currentcolor; }}')
+  styl.sheet.insertRule('*, *::before, *::after { box-sizing: border-box; }')
+  styl.sheet.insertRule('h1, h2, h3, h4, h5, h6 { font-family: var(--font-family-headers); margin: 0 0 0 0.65em; }')
+  styl.sheet.insertRule('h1 {font-size: 4.0rem; }')
+  styl.sheet.insertRule('h2 {font-size: 3.2rem; }')
+  styl.sheet.insertRule('h3 {font-size: 2.4rem; }')
+  styl.sheet.insertRule('h4 {font-size: 2.0rem; }')
+  styl.sheet.insertRule('h5 {font-size: 1.8rem; }')
+  styl.sheet.insertRule('h6 {font-size: 1.6rem; }')
+  styl.sheet.insertRule('a, a:hover { text-decoration: none; }')
+
+  // global registration custom directives
+  Vue.directive('contrast', contrastDirective)
+  // global registration vue components
   Object.entries(components).forEach(([componentName, component]) => {
-    Vue.component(componentName, component);
+    Vue.component(componentName, component)
   });
 };
 

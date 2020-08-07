@@ -30,6 +30,7 @@ export default {
     label: { type: String, default: '' },
     outline: { type: Boolean, default: false },
     plain: { type: Boolean, default: false },
+    rounded: { type: Boolean, default: false },
     size: { type: String, default: 'medium' },
     submit: { type: Boolean, default: false }
   },
@@ -94,6 +95,9 @@ export default {
       el.style.setProperty('--btn-background-focus', obj.focusBg)
       el.style.setProperty('--btn-border-focus', obj.focusBorder)
       el.style.setProperty('--btn-color-focus', obj.focusColor)
+      if (this.rounded) {
+        el.style.setProperty('--border-radius', '25px')
+      }
     },
     onClick (event) {
       this.$emit('click', event)
@@ -107,6 +111,7 @@ export default {
 a.tvl-button,
 a.tvl-button:visited,
 button.tvl-button {
+  position: relative;
   background: var(--btn-background);
   color: var(--btn-color);
   border-style: solid;
@@ -115,16 +120,17 @@ button.tvl-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin: 0.4rem;
   border-radius: var(--border-radius);
   padding: 0.25em 0.75em;
   min-width: 10ch;
-  min-height: 44px;
   text-align: center;
   line-height: 1.1;
   transition: 0.3s all ease;
   font-family: var(--font-family-headers);
   font-weight: 500;
 }
+
 a.tvl-button:hover,
 a.tvl-button:active,
 button.tvl-button:not(.tvl-button-disabled):hover,
@@ -148,17 +154,37 @@ button.tvl-button:not(.tvl-button-disabled):active {
 }
 .tvl-button-large {
   font-size: 1.8rem;
+  min-height: 5.2rem;
 }
 .tvl-button-medium {
   font-size: 1.6rem;
+  min-height: 4.4rem;
 }
 .tvl-button-small {
   font-size: 1.4rem;
+  min-height: 3.2rem;
 }
 .tvl-button.tvl-button-disabled {
   cursor: not-allowed;
   position: relative;
 }
+.tvl-button:not(.tvl-button-disabled)::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  min-height: calc(100% + 0.2rem);
+  min-width: calc(100% + 0.2rem);
+  border-radius: var(--border-radius);
+  left: -0.1rem;
+  top: -0.1rem;
+  background: transparent;
+  box-shadow: none;
+  transition: box-shadow 0.3s ease;
+}
+.tvl-button:not(.tvl-button-disabled):focus::before {
+  box-shadow: var(--focus-shadow);
+}
+
 .tvl-button-disabled::after {
   position: absolute;
   content: "";

@@ -1,6 +1,6 @@
 {
   "name": "tomik-tvl-library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/tomik-tvl-library.ssr.js",
   "browser": "dist/tomik-tvl-library.esm.js",
@@ -45,6 +45,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "npm": "^6.14.7"
+    "npm": "^6.14.7",
+    "stylus-loader": "^3.0.2"
   }
 }

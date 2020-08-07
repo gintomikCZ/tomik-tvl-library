@@ -14,18 +14,52 @@ export const hexToRgb = (col) => {
   const color = col.charAt(0) === '#' ? col.substr(1) : col
   return color.match(/.{1,2}/g).map(item => parseInt(item, 16))
 }
+export const rgbStringToArray = (str) => {
+  if (typeof str !== 'string') throw new Error('error converting color rgb to hex. value: ' + str)
+  const splited = str.split(',')
+  const rgb = []
+  rgb.push(parseInt(splited[0].replace(/\D/g, ''), 10))
+  rgb.push(parseInt(splited[1].replace(/\D/g, ''), 10))
+  rgb.push(parseInt(splited[2].replace(/\D/g, ''),10))
+  return rgb
+}
+export const rgbToHex = (rgb) => {
+  const ar = Array.isArray(rgb) ? rgb : rgbStringToArray(rgb)
+  const toHex = (num) => {
+    const hex = num.toString(16)
+    return hex.length === 1 ? '0' + hex : hex
+  }
+  return '#' + toHex(ar[0]) + toHex(ar[1]) + toHex(ar[2])
+}
+export const getColorProperty = (el, property) => {
+  const getColorPropertyFromEl = (el, property) => {
+    const val = window.getComputedStyle(el).getPropertyValue(property)
+    return val === 'rgba(0, 0, 0, 0)' ? '' : val
+  }
+  let elem = el
+  let v = getColorPropertyFromEl(elem, property)
+  if (v) return v
+  if (elem.tagName === 'body') return false
+  do {
+    elem = elem.parentElement
+    if (!elem) return false
+    v = getColorPropertyFromEl(elem, property)
+  } while (!v && elem.tagName !== 'BODY')
+  if (!v) return false
+  return v
+}
 export const luminance = (col) => {
   const rgb = hexToRgb(col)
   const ar = rgb.map(v => {
-     v /= 255
-     return v <= 0.03928 ? v / 12.92 : Math.pow( (v + 0.055) / 1.055, 2.4)
+    v /= 255
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)
   })
   return ar[0] * 0.2126 + ar[1] * 0.7152 + ar[2] * 0.0722
 }
-export const contrast = (col1, col2) => {
+export const getContrastRatio = (col1, col2) => {
   const lum1 = luminance(col1)
   const lum2 = luminance(col2)
-  const result =  lum1 > lum2 ? (lum1 + 0.05) / (lum2 + 0.05) : (lum2 + 0.05) / (lum1 + 0.05)
+  const result = lum1 > lum2 ? (lum1 + 0.05) / (lum2 + 0.05) : (lum2 + 0.05) / (lum1 + 0.05)
   return Math.round(100 * result) / 100
 }
 export const lighten = (color, percent) => {
@@ -43,7 +77,6 @@ export const lighten = (color, percent) => {
   let G = (num & 0x0000FF) + amt;
   if (G > 255) G = 255
   else if (G < 0) G = 0
-
   return "#" + (0x1000000 + R * 0x10000 + B * 0x100 + G).toString(16).slice(1);
 }
 export const darken = (color, percent) => {
@@ -72,12 +105,12 @@ export const getTextColorToBg = (bg, bolder = false, criterion = 4.5) => {
     criterion - height of the minimal ciotrast ratio */
   if (!bolder) {
     const text = getTextColor()
-    if (contrast(bg, text) >= criterion) return text
+    if (getContrastRatio(bg, text) >= criterion) return text
   }
   if (isLight(bg)) {
     const dark = getTextColor('dark')
-    return contrast(bg, dark) >= criterion ? dark : getColor('black')
+    return getContrastRatio(bg, dark) >= criterion ? dark : getColor('black')
   }
   const light = getTextColor('light')
-  return contrast(bg, light) >= criterion ? light : getColor('white')
+  return getContrastRatio(bg, light) >= criterion ? light : getColor('white')
 }
